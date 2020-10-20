@@ -15,14 +15,16 @@ class Automaton
     
 
     // disable copying--https://mbevin.wordpress.com/2012/11/20/move-semantics
-    Automaton(const Automaton&);
-    Automaton& operator=(const Automaton&);
+    Automaton(const Automaton&)= delete;
+    Automaton& operator=(const Automaton&)= delete;
+    // TODO: destructors
 public: 
-    // move semantics
     Automaton() {}
     Automaton(char *c);
-    Automaton(Automaton&& o);
-    Automaton& operator=(Automaton&& o);
+    // apparently \/ shouldn't be needed by using stl containers
+    //// move semantics
+    //Automaton(Automaton&& o);
+    //Automaton& operator=(Automaton&& o);
 
     static Automaton construct(std::string);
 

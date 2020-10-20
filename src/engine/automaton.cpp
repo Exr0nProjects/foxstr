@@ -3,8 +3,8 @@
 // TODO: \/ all of those
 
 Automaton::Automaton(char *c) {}
-Automaton::Automaton(Automaton&& o) {}
-Automaton& Automaton::operator=(Automaton&& o) {}
+//Automaton::Automaton(Automaton&& o) {}
+//Automaton& Automaton::operator=(Automaton&& o) {}
 
 // automaton composition functions
 Automaton Automaton::concat(Automaton&& a, Automaton&& b) {}

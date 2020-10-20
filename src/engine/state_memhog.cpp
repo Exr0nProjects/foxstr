@@ -3,7 +3,7 @@
 
 void State::print()
 {
-    printf("debug state %x\n", this);
+    printf("debug state at %x\n", this);
     bool has=0;
     for (const std::shared_ptr<State>& p : _nxt)
         if (p) has=1,

@@ -9,7 +9,12 @@
 
 class State
 {
+    // force move semantics by deleting the copy constructors--https://stackoverflow.com/a/45443643/10372825
+    State(const State&)= delete;
+    State& operator=(const State&)= delete;
+    // TODO: destructors
 public:
+    State() {};
     std::array<std::shared_ptr<State>, ALPHABET_SIZE> _nxt;
     std::list<std::shared_ptr<State> > _nop;
     std::shared_ptr<State> fail=nullptr;    // TODO: ac auto style failpointers

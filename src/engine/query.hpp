@@ -12,6 +12,7 @@ class Query
     std::list<State> _states;
     std::list<size_t> _results;
 public:
+    // TODO: destructors
     void parseChar(char c);
 };
 
