@@ -9,6 +9,7 @@
 
 class Automaton
 {
+public: // TODO: debug only
     std::shared_ptr<State> _beg=nullptr, _end=nullptr;  // TODO: should be unique_ptr and weak_ptr respectively
     // automaton composition functions
     static Automaton concat(Automaton&& a, Automaton&& b);
@@ -20,16 +21,17 @@ class Automaton
     Automaton& operator=(const Automaton&)= delete;
     // TODO: destructors
 public: 
+    const unsigned id=rand();
     Automaton() {}
-    Automaton(char *c);
+    Automaton(const char);
+    Automaton(const std::string&, size_t=-1, size_t=-1);
     // apparently \/ shouldn't be needed by using stl containers
     //// move semantics
     //Automaton(Automaton&& o);
     //Automaton& operator=(Automaton&& o);
 
-    static Automaton construct(std::string);
-
     void createQuery(std::string &s);
+    void print() const;
 };
 
 #endif
