@@ -13,6 +13,7 @@
 class State
 {
     // force move semantics by deleting the copy constructors--https://stackoverflow.com/a/45443643/10372825
+    unsigned _id = rand()+1;
     State(const State&)= delete;
     State& operator=(const State&)= delete;
     // TODO: destructors
@@ -29,12 +30,13 @@ public:
     //                const State*,
     //                const State>
     //{}
-    const unsigned id = rand();
     State() {};
+    //~State() { printf("Destructing state %8x\n", _id); }
     void linkTo(char, std::shared_ptr<State>);
     void assign(std::shared_ptr<State>);
     void print() const;
-    bool operator=(State &o) const { return id < o.id; };
+    bool operator=(State &o) const { return id() < o.id(); };
+    unsigned id() const { return _id; }
 };
 
 #endif

@@ -1,4 +1,4 @@
-CFLAGS="-std=c++17"
+CFLAGS=-std=c++17
 
 debug: noopt run
 

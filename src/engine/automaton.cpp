@@ -11,20 +11,27 @@ Automaton::Automaton(const char c)
 
 Automaton::Automaton(const std::string&, size_t l, size_t r) {}
 
-//Automaton::Automaton(Automaton&& o) {}
-//Automaton& Automaton::operator=(Automaton&& o) {}
+void Automaton::createQuery(std::string &s) {}
 
 // automaton composition functions
-Automaton Automaton::concat(Automaton&& a, Automaton&& b)
+void Automaton::concat(Automaton &o)
 {
-
+    if (!id()) return;
+    _end->assign(o._beg);
+    _end = o._end;
+    o._beg = o._end = nullptr;
+    o._id = 0;
 }
-Automaton Automaton::couple(Automaton&& a, Automaton&& b) {}
-
-void Automaton::createQuery(std::string &s) {}
+void Automaton::couple(Automaton &o) {} // TODO
+//Automaton Automaton::concat(Automaton& a, Automaton& b)
+//{
+//    a._end->assign(b._beg);
+//}
+//Automaton Automaton::couple(Automaton& a, Automaton& b) {}
 
 void Automaton::print() const
 {
-    printf("debug automaton id %8x (%8x -> %-8x):\n", id, _beg->id, _end->id);
+    if (!id()) printf("debug invalidated automaton;\n"); else
+    printf("debug automaton id %8x (%8x -> %-8x):\n", id(), _beg->id(), _end->id());
 }
 

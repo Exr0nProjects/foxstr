@@ -9,11 +9,16 @@
 
 class Automaton
 {
+    unsigned _id = rand()+1;
 public: // TODO: debug only
     std::shared_ptr<State> _beg=nullptr, _end=nullptr;  // TODO: should be unique_ptr and weak_ptr respectively
     // automaton composition functions
-    static Automaton concat(Automaton&& a, Automaton&& b);
-    static Automaton couple(Automaton&& a, Automaton&& b); // TODO: replace with variadic template--https://stackoverflow.com/a/9040913/10372825
+
+    void concat(Automaton&);
+    void couple(Automaton&); // TODO: replace with variadic template--https://stackoverflow.com/a/9040913/10372825
+
+    //static Automaton concat(Automaton& a, Automaton& b);
+    //static Automaton couple(Automaton& a, Automaton& b); // TODO: replace with variadic template--https://stackoverflow.com/a/9040913/10372825
     
 
     // disable copying--https://mbevin.wordpress.com/2012/11/20/move-semantics
@@ -21,7 +26,6 @@ public: // TODO: debug only
     Automaton& operator=(const Automaton&)= delete;
     // TODO: destructors
 public: 
-    const unsigned id=rand();
     Automaton() {}
     Automaton(const char);
     Automaton(const std::string&, size_t=-1, size_t=-1);
@@ -32,6 +36,7 @@ public:
 
     void createQuery(std::string &s);
     void print() const;
+    unsigned id() const { return _id; }
 };
 
 #endif
