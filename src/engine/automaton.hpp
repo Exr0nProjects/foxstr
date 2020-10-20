@@ -9,7 +9,7 @@
 
 class Automaton
 {
-    unsigned _id = rand()+1;
+    bool valid = 1;
 public: // TODO: debug only
     std::shared_ptr<State> _beg=nullptr, _end=nullptr;  // TODO: should be unique_ptr and weak_ptr respectively
     // automaton composition functions
@@ -26,6 +26,7 @@ public: // TODO: debug only
     Automaton& operator=(const Automaton&)= delete;
     // TODO: destructors
 public: 
+    const unsigned id = rand() + 1;
     Automaton() {}
     Automaton(const char);
     Automaton(const std::string&, size_t=-1, size_t=-1);
@@ -36,7 +37,7 @@ public:
 
     void createQuery(std::string &s);
     void print() const;
-    unsigned id() const { return _id; }
+    //unsigned id() const { return _id; }
 };
 
 #endif
