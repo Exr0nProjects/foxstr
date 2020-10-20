@@ -1,9 +1,12 @@
 CFLAGS=""
 
-debug: main run
+debug: noopt run
 
-main: $(shell find src/engine/ -type f)
-	g++ --std=c++11 src/engine/*.cpp -o main $(CFLAGS)
+noopt: $(shell find src/engine/ -type f)
+	g++ --std=c++11 $(CFLAGS) src/engine/*.cpp -o main
+
+opt: $(shell find src/engine/ -type f)
+	g++ --std=c++11 $(CFLAGS) -O2 src/engine/*.cpp -o main
 
 run:
 	./main
