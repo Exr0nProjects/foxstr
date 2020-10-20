@@ -15,7 +15,7 @@ class State
     // TODO: destructors
 public:
     State() {};
-    std::array<std::shared_ptr<State>, ALPHABET_SIZE> _nxt;
+    std::array<std::list<std::shared_ptr<State> >, ALPHABET_SIZE> _nxt;
     std::list<std::shared_ptr<State> > _nop;
     std::shared_ptr<State> fail=nullptr;    // TODO: ac auto style failpointers
     // TODO: convert to iterator someday
@@ -27,7 +27,8 @@ public:
     //                const State*,
     //                const State>
     //{}
-    void print();
+    void assign(std::shared_ptr<State>);
+    void print() const;
 };
 
 #endif

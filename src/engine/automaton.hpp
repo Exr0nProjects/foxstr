@@ -2,13 +2,14 @@
 #define FOXSTR_AUTOMATON
 
 #include <string>
+#include <utility>
 
 #include "state_memhog.hpp"
 #include "query.hpp"
 
 class Automaton
 {
-    State *_beg=nullptr, *_end=nullptr;
+    std::shared_ptr<State> _beg=nullptr, _end=nullptr;  // TODO: should be unique_ptr and weak_ptr respectively
     // automaton composition functions
     static Automaton concat(Automaton&& a, Automaton&& b);
     static Automaton couple(Automaton&& a, Automaton&& b); // TODO: replace with variadic template--https://stackoverflow.com/a/9040913/10372825
