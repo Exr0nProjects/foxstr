@@ -1,0 +1,2 @@
+#define ALPHABET_SIZE 128
+
