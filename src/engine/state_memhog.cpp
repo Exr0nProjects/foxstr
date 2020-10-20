@@ -1,13 +1,18 @@
 #include <cstdio>
 #include "state_memhog.hpp"
 
+void State::assign(std::shared_ptr<State> op)
+{
+    for (size_t i=0; i<ALPHABET_SIZE; ++i)
+        _nxt[i].merge(op->_nxt[i]);
+}
+
 void State::print() const
 {
-    printf("debug state at %x\n", this);
+    printf("debug state id %x\n", id);
     bool has=0;
-    for (const std::list<std::shared_ptr<State> > &l : _nxt)
-        for (const std::shared_ptr<State>& p : l)
-            if (p) has=1,
-                printf("    %3zu '%c'-> %x\n", &l-_nxt.begin(), &l-_nxt.begin(), &*p);
+    for (const std::set<std::shared_ptr<State> > &s : _nxt)
+        if (s.size()) for (const std::shared_ptr<State>& p : s)
+                printf("    %3zu '%c'-> %x\n", &s-_nxt.begin(), &s-_nxt.begin(), p->id);
     if (!has) printf("    (no downstream states)\n");
 }

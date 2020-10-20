@@ -7,7 +7,10 @@ Automaton::Automaton(char *c) {}
 //Automaton& Automaton::operator=(Automaton&& o) {}
 
 // automaton composition functions
-Automaton Automaton::concat(Automaton&& a, Automaton&& b) {}
+Automaton Automaton::concat(Automaton&& a, Automaton&& b)
+{
+
+}
 Automaton Automaton::couple(Automaton&& a, Automaton&& b) {}
 
 Automaton Automaton::construct(std::string) {}
