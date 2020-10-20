@@ -7,7 +7,7 @@
 
 class State
 {
-    State* _nxt[ALPHABET_SIZE];
+    State* _nxt[ALPHABET_SIZE] = {};
     // TODO: convert to iterator someday
     //class iterator: public std::iterator<
     //    // from https://en.cppreference.com/w/cpp/iterator/iterator
