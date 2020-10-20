@@ -7,10 +7,11 @@
 #include "config.hpp"
 #include "state_memhog.hpp"
 
-struct Query
+class Query
 {
-    std::list<State> states;
-    std::list<size_t> results;
+    std::list<State> _states;
+    std::list<size_t> _results;
+public:
     void parseChar(char c);
 };
 

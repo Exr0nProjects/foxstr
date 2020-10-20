@@ -3,9 +3,10 @@
 
 #include "config.hpp"
 
-struct State
+class State
 {
-    State* nxt[ALPHABET_SIZE];
+    State* _nxt[ALPHABET_SIZE];
+public:
     void print();
 };
 

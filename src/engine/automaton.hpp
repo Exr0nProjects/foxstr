@@ -6,9 +6,10 @@
 #include "state_memhog.hpp"
 #include "query.hpp"
 
-struct Automaton
+class Automaton
 {
-    State *beg=nullptr, *end=nullptr;
+    State *_beg=nullptr, *_end=nullptr;
+public: 
     void createQuery(std::string &s);
 };
 
