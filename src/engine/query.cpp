@@ -1,3 +1,3 @@
 #include "query.hpp"
 
-void Query::parseChar(char c) {} // TODO
+void Query::parseChar(char c) {} // TODO--mvp

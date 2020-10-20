@@ -3,7 +3,7 @@
 void State::linkTo(char c, std::shared_ptr<State> op)
 {
     if (!valid) return;
-    if (!c) // TODO: hacky, should have specific type for epsilon and fail pointers
+    if (!c) // TODO--nice: hacky, should have specific type for epsilon and fail pointers
         _nop.insert(op);
     else
         _nxt[c].insert(op);

@@ -14,14 +14,14 @@ class State
 {
     bool valid = 1;
     // force move semantics by deleting the copy constructors--https://stackoverflow.com/a/45443643/10372825
-    State(const State&)= delete;
-    State& operator=(const State&)= delete;
-    // TODO: destructors
     std::array<std::set<std::shared_ptr<State> >, ALPHABET_SIZE> _nxt; // TODO--opt: could probably be weak_ptr
     std::set<std::shared_ptr<State> > _nop;
-    std::shared_ptr<State> fail=nullptr;    // TODO: ac auto style failpointers
+    std::shared_ptr<State> fail=nullptr;    // TODO--mvp: ac auto style failpointers
+
+    State(const State&)= delete;
+    State& operator=(const State&)= delete;
 public:
-    // TODO: convert to iterator someday
+    // TODO--nice: convert to iterator someday
     //class iterator: public std::iterator<
     //    // from https://en.cppreference.com/w/cpp/iterator/iterator
     //                std::random_access_iterator_tag,
@@ -31,13 +31,13 @@ public:
     //                const State>
     //{}
     const unsigned id = rand()+1;
+
     State() {};
     //~State() { printf("Destructing state %8x\n", _id); }
     void linkTo(char, std::shared_ptr<State>);
     void assign(std::shared_ptr<State>);
     void print() const;
     bool operator=(State &o) const { return id < o.id; };
-    //unsigned id() const { return _id; }
 };
 
 #endif

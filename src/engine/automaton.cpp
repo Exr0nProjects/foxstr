@@ -1,7 +1,5 @@
 #include "automaton.hpp"
 
-// TODO: \/ all of those
-
 Automaton::Automaton(const char c)
 {
     _beg = std::make_shared<State>();
@@ -22,12 +20,7 @@ void Automaton::concat(Automaton &o)
     o._beg = o._end = nullptr;
     o.valid = 0;
 }
-void Automaton::couple(Automaton &o) {} // TODO
-//Automaton Automaton::concat(Automaton& a, Automaton& b)
-//{
-//    a._end->assign(b._beg);
-//}
-//Automaton Automaton::couple(Automaton& a, Automaton& b) {}
+void Automaton::couple(Automaton &o) {} // TODO--mvp
 
 void Automaton::print() const
 {
