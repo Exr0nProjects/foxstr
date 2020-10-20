@@ -1,6 +1,5 @@
 #include <cstdio>
 
-#include "state_memhog.hpp"
 #include "automaton.hpp"
 
 int main()
