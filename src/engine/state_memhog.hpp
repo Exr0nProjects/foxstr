@@ -2,12 +2,17 @@
 #define FOXSTR_STATE
 
 #include <iterator>
+#include <list>
+#include <array>
 
 #include "config.hpp"
 
 class State
 {
-    State* _nxt[ALPHABET_SIZE] = {};
+public:
+    std::array<std::shared_ptr<State>, ALPHABET_SIZE> _nxt;
+    std::list<std::shared_ptr<State> > _nop;
+    std::shared_ptr<State> fail=nullptr;    // TODO: ac auto style failpointers
     // TODO: convert to iterator someday
     //class iterator: public std::iterator<
     //    // from https://en.cppreference.com/w/cpp/iterator/iterator
@@ -17,7 +22,6 @@ class State
     //                const State*,
     //                const State>
     //{}
-public:
     void print();
 };
 

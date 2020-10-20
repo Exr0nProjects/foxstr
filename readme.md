@@ -15,5 +15,6 @@ Programming Sources:
 - [Iteratable classes](https://en.cppreference.com/w/cpp/iterator/iterator)
     - [Iterator type tags](https://en.cppreference.com/w/cpp/iterator/iterator_tags)
 - [Static member functions](https://www.learncpp.com/cpp-tutorial/812-static-member-functions/)
+- [Smart pointers intro](https://www.internalpointers.com/post/beginner-s-look-smart-pointers-modern-c)
 - [Move semantics intro](https://mbevin.wordpress.com/2012/11/20/move-semantics/)
 

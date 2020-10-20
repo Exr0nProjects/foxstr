@@ -3,10 +3,10 @@
 
 void State::print()
 {
-    printf("debug state %u\n", this);
+    printf("debug state %x\n", this);
     bool has=0;
-    for (size_t i=0; i<ALPHABET_SIZE; ++i)
-        if (_nxt[i]) has=1,
-            printf("    %3zu '%c' -> %x\n", i, i, _nxt[i]);
+    for (const std::shared_ptr<State>& p : _nxt)
+        if (p) has=1,
+            printf("    %3zu '%ld' -> %x\n", &p-_nxt.begin(), &p-_nxt.begin(), &p);
     if (!has) printf("    (no downstream states)\n");
 }
