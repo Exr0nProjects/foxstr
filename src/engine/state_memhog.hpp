@@ -35,7 +35,7 @@ public:
     State() {};
     //~State() { printf("Destructing state %8x\n", _id); }
     void linkTo(char, std::shared_ptr<State>);
-    void assign(std::shared_ptr<State>);
+    void consume(std::shared_ptr<State>);
     void print() const;
     bool operator=(State &o) const { return id < o.id; };
 };

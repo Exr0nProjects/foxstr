@@ -15,17 +15,19 @@ void Automaton::createQuery(std::string &s) {}
 void Automaton::concat(Automaton &o)
 {
     if (!valid) return;
-    _end->assign(o._beg);
+    _end->consume(o._beg);
     _end = o._end;
-    o._beg = o._end = nullptr;
-    o.valid = 0;
+    o._beg = o._end = nullptr; o.valid = 0;
 }
 void Automaton::couple(Automaton &o)
 {
     if (!valid) return;
-    _beg->assign(o.beg);
-    _end->assign(o.end);
-    // incomplete
+    _beg->consume(o._beg);
+    auto newEnd = std::make_shared<State>();
+      _end->linkTo(-1, newEnd);
+    o._end->linkTo(-1, newEnd);
+    _end = newEnd;
+    o._beg = o._end = nullptr; o.valid = 0;
 }
 
 void Automaton::print() const

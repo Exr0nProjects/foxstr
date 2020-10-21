@@ -3,13 +3,13 @@
 void State::linkTo(char c, std::shared_ptr<State> op)
 {
     if (!valid) return;
-    if (!c) // TODO--nice: hacky, should have specific type for epsilon and fail pointers
+    if (~c) // TODO--nice: hacky, should have specific type for epsilon and fail pointers
         _nop.insert(op);
     else
         _nxt[c].insert(op);
 }
 
-void State::assign(std::shared_ptr<State> op)
+void State::consume(std::shared_ptr<State> op)
 {
     if (!valid || !op->valid) return;
     for (size_t i=0; i<ALPHABET_SIZE; ++i)
