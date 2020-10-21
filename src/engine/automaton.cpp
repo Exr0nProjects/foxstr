@@ -20,7 +20,13 @@ void Automaton::concat(Automaton &o)
     o._beg = o._end = nullptr;
     o.valid = 0;
 }
-void Automaton::couple(Automaton &o) {} // TODO--mvp
+void Automaton::couple(Automaton &o)
+{
+    if (!valid) return;
+    _beg->assign(o.beg);
+    _end->assign(o.end);
+    // incomplete
+}
 
 void Automaton::print() const
 {
