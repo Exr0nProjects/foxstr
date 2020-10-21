@@ -1,6 +1,8 @@
 #ifndef FOXSTR_AUTOMATON
 #define FOXSTR_AUTOMATON
 
+#include <set>
+#include <queue>
 #include <string>
 #include <utility>
 
@@ -21,7 +23,7 @@ public:
     const unsigned id = rand() + 1;
     Automaton() {}
     Automaton(const char);
-    Automaton(const std::string&, size_t=-1, size_t=-1);
+    Automaton(const std::string&);
     // automaton composition functions
     void concat(Automaton&);
     void couple(Automaton&); // TODO: replace with variadic template--https://stackoverflow.com/a/9040913/10372825
