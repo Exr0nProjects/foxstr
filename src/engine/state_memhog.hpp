@@ -33,13 +33,17 @@ public:
     const unsigned id = rand()+1;
 
     State() {};
-    //~State() { printf("Destructing state %8x\n", _id); }
+    ~State() { printf("~ destructing state %8x\n", id); }
     void linkTo(char, std::shared_ptr<State>);
     void consume(std::shared_ptr<State>);
     void print() const;
     bool operator=(State &o) const { return id < o.id; };
-    const std::array<std::set<std::shared_ptr<State> >, ALPHABET_SIZE>& nxtl() const { return _nxt; }
-    const std::set<std::shared_ptr<State> >& nopl() const { return _nop; }
+    const std::array<
+        std::set<std::shared_ptr<State> >,
+        ALPHABET_SIZE>& nxtl() const { return _nxt; }
+    const std::set<
+        std::shared_ptr<State>
+        >& nopl() const { return _nop; }
 };
 
 #endif

@@ -37,9 +37,9 @@ void Automaton::couple(Automaton &o)
 
 void Automaton::print() const
 {
-    // print internal state graph
-    if (!valid) { printf("debug invalidated automaton;\n"); return; }
-    printf("debug automaton id %8x (%8x -> %-8x):\n", id, _beg->id, _end->id);
+    if (!valid) { printf("    debug invalidated automaton;\n"); return; }
+    printf("    debug automaton id %8x (%8x -> %-8x):\n", id, _beg->id, _end->id);
+    // print internal state graph using a bfs
     std::set<unsigned> vis;
     std::queue<std::shared_ptr<State> > bfs;
     bfs.push(_beg);
