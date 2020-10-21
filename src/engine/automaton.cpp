@@ -38,7 +38,7 @@ void Automaton::couple(Automaton &o)
 void Automaton::print() const
 {
     // print internal state graph
-    if (!valid) printf("debug invalidated automaton;\n"); else
+    if (!valid) { printf("debug invalidated automaton;\n"); return; }
     printf("debug automaton id %8x (%8x -> %-8x):\n", id, _beg->id, _end->id);
     std::set<unsigned> vis;
     std::queue<std::shared_ptr<State> > bfs;
@@ -49,6 +49,10 @@ void Automaton::print() const
         vis.insert(bfs.front()->id);
         bfs.front()->print();
         // TODO: push to queue
+        for (auto &s : bfs.front()->nxtl())
+            if (s.size()) for (auto &p : s)
+                bfs.push(p);
     }
+    printf("\n");
 }
 
